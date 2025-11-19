@@ -231,3 +231,152 @@ Advanced topics
 Deployment
 
 Research-level challenges
+
+
+
+1. Low-level tensors and autograd
+Core
+
+Description: Understand how tensors store data (contiguous vs non-contiguous), how strides and views affect memory layout, and how broadcasting rules apply. Learn gradient accumulation and how hooks can intercept gradients.
+
+Deliverables:
+
+Implement a Tensor class with stride-based slicing.
+
+Write a gradient hook that logs and modifies gradients during backprop.
+
+Demonstrate broadcasting by implementing elementwise ops manually.
+
+Deep
+
+Description: Build custom autograd functions with torch.autograd.Function. Explore higher-order gradients, vector-Jacobian products (vjp), Jacobian-vector products (jvp), and graph checkpointing for memory efficiency.
+
+Deliverables:
+
+Implement a custom backward pass for a new activation function.
+
+Build a mini autograd engine supporting vjp/jvp.
+
+Add checkpointing to reduce memory usage in a deep network.
+
+2. Numerical optimization
+Core
+
+Description: Learn how optimizers update parameters. Implement SGD, Momentum, Adam, and RMSProp from scratch. Understand stability tricks like epsilon and bias correction.
+
+Deliverables:
+
+Train a CNN on CIFAR-10 using your own Adam implementation.
+
+Compare convergence curves of SGD vs Adam.
+
+Deep
+
+Description: Master mixed precision training (AMP), dynamic loss scaling to prevent underflow, and gradient clipping/normalization to stabilize training.
+
+Deliverables:
+
+Implement AMP manually with autocast rules.
+
+Add dynamic loss scaling to prevent NaNs.
+
+Train a Transformer with gradient clipping and show improved stability.
+
+3. GPU and kernels
+Core
+
+Description: Learn CUDA streams, events, pinned memory, async transfers, and occupancy basics to maximize GPU utilization.
+
+Deliverables:
+
+Build a dataloader with pinned memory and async transfers.
+
+Benchmark GPU utilization with and without streams.
+
+Deep
+
+Description: Write custom C++/CUDA extensions, optimize with tiling, shared memory, warp-level operations, and kernel fusion.
+
+Deliverables:
+
+Implement a fused LayerNorm + Dropout CUDA kernel.
+
+Optimize a reduction kernel with shared memory.
+
+Benchmark against PyTorch’s native ops.
+
+4. Performance engineering
+Core
+
+Description: Profile models using torch.profiler and NVTX. Learn microbenchmarking and avoid Python overhead by vectorizing operations.
+
+Deliverables:
+
+Profile ResNet-18 training and identify top 3 bottlenecks.
+
+Replace Python loops with vectorized tensor ops.
+
+Deep
+
+Description: Understand PyTorch’s memory allocator, use CUDA graphs for inference, fuse operators, and experiment with Triton or custom codegen.
+
+Deliverables:
+
+Implement inference with CUDA graphs and measure latency reduction.
+
+Write a Triton kernel for matrix multiplication.
+
+Compare allocator fragmentation with different batch sizes.
+
+5. Distributed systems
+Core
+
+Description: Learn DistributedDataParallel (DDP), gradient buckets, allreduce, and communication overlap for multi-GPU training.
+
+Deliverables:
+
+Train ResNet-50 on 4 GPUs with DDP.
+
+Tune bucket sizes for optimal communication overlap.
+
+Deep
+
+Description: Implement ZeRO-style optimizer sharding, pipeline parallelism, tensor parallelism, and checkpointing for large models.
+
+Deliverables:
+
+Train a 300M parameter model with optimizer sharding.
+
+Implement pipeline parallelism for a Transformer.
+
+Add activation checkpointing to reduce memory usage.
+
+6. Data, I/O, and reproducibility
+Core
+
+Description: Build high-throughput data pipelines with prefetching and pinned buffers to keep GPUs busy.
+
+Deliverables:
+
+Implement a dataloader that achieves ≥90% GPU utilization.
+
+Compare throughput with and without prefetching.
+
+Deep
+
+Description: Ensure determinism across runs, track variance in experiments, and build scaffolding for reproducible ML research.
+
+Deliverables:
+
+Run experiments with fixed seeds and verify reproducibility.
+
+Build a variance tracker that logs accuracy fluctuations across runs.
+
+Create a reproducibility checklist for large-scale experiments.
+
+🎯 How to use this map
+Treat each Core as a foundation project.
+
+Treat each Deep as a capstone project with benchmarks.
+
+Document every deliverable with code, benchmarks, and lessons learned.
